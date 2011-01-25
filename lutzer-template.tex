@@ -1,0 +1,515 @@
+%%%%%%%%%%%%%%%%%%%%%
+% This file has been borrowed for Carl Lutzer:
+% http://people.rit.edu/cvlsma/LaTeX/
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+%
+% This file is my first attempt at providing a general 
+% introductory template for LaTeX.  It's meant to provide
+% some basic understanding of structure and language,
+% and to demonstrate some of the basics by way of example.
+% 
+% I recommend compiling it so that you can see the 
+% typesetting to which the comments refer.
+%
+% NOTE: Percent signs are used to indicate comments.
+% The compiler doesn't read past a percent sign on a
+% given line.
+%
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%
+% Start by giving the compiler 
+% formatting instructions
+%
+%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{report} % You may use ``article" instead of ``report"
+
+\textheight 8 in			% Adjusts the height of the printed area
+\textwidth 5 in			% Adjusts the width of the printed area
+\topmargin 0 in			% Adjusts the top margin of the document
+\oddsidemargin .9 in   	% Left Margin adjustment for odd pages (0 = 1" margin)
+\evensidemargin .9 in  % Right Margin adjustment for even pages
+
+
+\pagestyle{myheadings}				% This command says to use headers.
+\markright{Template for \LaTeX~ Source Code} % This line lets you define the header
+\setcounter{footnote}{0}				% The footnotes will start at 1.
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%
+% Next, we pull in some packages that define 
+% particular symbols, fonts, and environments
+% that are useful when typing mathematical
+% documents
+%
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{color}		% Allows color in text, demonstrated below.
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%
+% Next, we define some new ``environments"
+% Environments are entered and exited with
+% \begin{environment} and \end{environment}
+% commands, as shown below in the case of 
+% itemization.
+%
+%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{THEOREM}		
+\newtheorem{lemma}{LEMMA}
+\newtheorem{proposition}{PROPOSITION}
+\newtheorem{definition}{DEFINITION}
+\newtheorem{corollary}{COROLLARY}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%
+% Next, we define some short-hand notation
+% because typing long command sequences
+% over and over again is tedious, and hard on
+% the fingers.
+%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\mbf}{\mathbf}	% Tells the compiler to switch into math-style bold-face
+\newcommand{\R}{\mathbb{R}}	% To use the symbol for the set of real numbers, type \R
+\newcommand{\N}{\mathbb{N}}	% To use the symbol for the set of natural numbers type \N
+\newcommand{\C}{\mathbb{C}}	% To use the symbol for the set of complex numbers type \C
+\newcommand{\Z}{\mathbb{Z}}	% To use the symbol for the set of integers type \Z
+\newcommand{\Q}{\mathbb{Q}}	% To use the symbol for the set of rational numbers type \Q
+
+\newcommand{\be}{\begin{enumerate}} % Defines a short-hand notation for the tag
+\newcommand{\ee}{\end{enumerate}}	% Defines a short-hand notation for the tag
+\newcommand{\bi}{\begin{itemize}}		% Defines a short-hand notation for the tag
+\newcommand{\ei}{\end{itemize}}		% Defines a short-hand notation for the tag
+
+
+\newcommand{\ds}{\displaystyle}		% Defines a short-hand notation for the tag
+
+\newcommand{\bx}{\hfill \rule{1.5 mm}{1.5 mm}} % Used to denote the end of something.
+
+%%%%%%%%%%%%%%%%%%%%%
+% I've included the command \limit, below, as an example of how to 
+% define a new command that takes arguments.  In this case, the 
+% command takes two arguments.  For example, \limit{x}{\infty} .  
+% As you can see in the definition, this command gives the 
+% display-style typesetting.  If you want in-line typesetting, you should 
+% use \lim_{x \rightarrow \infty} instead.
+%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\limit}[2]{{\displaystyle{\lim_{#1 \rightarrow #2}}~}}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+% Graphics:
+%
+% 	If you want to include the figure "mypicture.eps" in the directory "images"
+% 	I suggest that you use the command
+%
+% 		\includegraphics[scale=0.5,angle=-90]{images/mypicture.eps}
+%
+% 			or, for Mac OSX 
+%
+% 		\includegraphics[scale=0.5,angle=-90]{images/mypicture.pdf}
+%
+%%%%%%%%%%%%%%%%%%%%%
+
+% Here are some stylistic choices
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\thesection}{\thechapter}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%
+% Now we begin the document.
+%
+%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\thispagestyle{plain}	% Removes headers from this page, but puts a page number
+%\thispagestyle{empty} % Removes both headers and page numbers from this page.
+
+
+\begin{center}
+{\Huge {\it \LaTeX~ Primer}}\\
+\rule{\textwidth}{0.1mm}
+\end{center}
+% Because of the format I've used, the section number will reflect the chapter 
+% number, which is set with the \setcounter command.  There are other 
+% counters, such as enumi (which controls the first level of enumeration: 1,2,3,...) 
+% and enumii (which controls the second level of enumeration 1a, 1b, 1c,...)
+\setcounter{chapter}{1} 
+\section{Introduction (Read Me)}
+\label{intro} % This command allows me to reference the section number later.
+
+\noindent{This} document is intended to be used as a primer.  You are welcome to 
+remove the body of the document and use the headers only.  If you actually read 
+this document, read with the goal of {\it learning by way of example} -- comparing 
+this .pdf file with the source code that generated it.  Most everything that's done 
+here is done for that reason (i.e., this isn't meant to be a narrative).  After doing 
+that, you should be able to answer questions like:
+
+\begin{itemize}
+\item How can you display an equation on it's own line?  
+\item How can you force a page break?  
+\item How can you include color?  
+\item How do you include footnotes?  
+\item How do you make horizontal separators (such as the one above)?  
+\item How do you makes enumerated or bulleted lists?
+\item How do I typeset math symbols?
+\item How do I give commands to the compiler?
+\end{itemize}
+
+I'll answer the last question right away.  Commands to the \LaTeX~ compiler  
+are preceded by a backslash.  They're all over the source code (take a look).  For 
+example, all of the math symbols you'll want are indicated by a command of the 
+form $\backslash$name.  For example, the symbol $\phi$ is generated by typing $\backslash$phi in math mode (see Section \ref{math} for ``math mode").
+
+As of \today, there's a nice online dictionary of symbols and ``environments" at 
+\begin{center}
+{\texttt http://crypto.stanford.edu/~bcwalrus/197/main.html}
+\end{center}
+
+Most of the symbols you could ever want are in the ``Math" section of the page 
+(there's a link in the left frame).  However, I also recommend buying a reference 
+book such as Leslie Lamport's {\it LaTeX: A Document Preparation System 
+(2nd Edition)}.\\
+~\\
+\centerline{\shortstack{\rule{0.3\textwidth}{0.5 mm} \\ \rule{0.3\textwidth}{0.5 mm}}}
+
+% Since I'm not using chapters, I have to increment the chapter counter manually.  
+\setcounter{chapter}{2} 
+\section{Paragraphs and Indentation}
+\label{paragraphs}
+
+You might notice that some of the lines in this document are indented (like this one), 
+but others were not.  \LaTeX~ keeps the first line of a section left justified, but will 
+otherwise  indent when it sees two carriage returns or when you're transitioning out 
+of an environment (note the sentence immediately following the centered URL above).  
+There are various ways to keep the compiler from indenting.  
+	\begin{enumerate} % Enters the enumeration environment
+	\item You can use the $\backslash$noindent command (demonstrated in the 
+	source code below).  
+	
+	\noindent{Here} is an example of the $\backslash$noindent command in use.  
+	This paragraph is aligned with the one above it, in the enumeration.  Notice that 
+	the $\backslash$noindent command was placed only around the first word of 
+	the paragraph.
+	
+	\item You can also use forced returns to end a line.\\
+	~\\
+	This technique was used to avoid an indentation in this line.  
+	
+	\item You can also avoid an indentation when exiting an ``environment" by leaving 
+	no space between the end of the environment and the following paragraph.  I'll do 
+	this below.
+	\end{enumerate} % Exits the enumeration environment
+
+Notice that this new paragraph is not indented.  I've put a footnote\footnote{The 
+footnote command is takes one argument: your footnote.} at the bottom of the page 
+in order to demonstrate its use.
+
+\setcounter{chapter}{3}
+\section{Page Breaks}
+
+I let \LaTeX ~decide where to make the vast majority of page breaks.  It does a 
+pretty good job.  Occasionally, when typing smaller documents or when I need 
+better control over formatting and placement of figures, etc., I force a pagebreak 
+with the command $\backslash$newpage . 
+
+Note that there are not headers on the first page, but there are on this page.  \LaTeX~ 
+omits headers on the first page but, after that, reverts to the page style defined at 
+the beginning of the document (search the source code for $\backslash$pagestyle).  
+The most common page styles are {\it empty}, {\it plain} and {\it myheadings}.  They 
+are used to do the following:
+	\bi
+	\item[\it empty:] No page numbers, no headers.
+	\item[\it plain:] Page numbers, but no headers.
+	\item[\it myheadings:] Page numbers and headers.
+	\ei
+
+\thispagestyle{plain}
+I've inserted the command $\backslash$thispagestyle$\{$plain$\}$ in the source 
+code between this sentence and the list above it.  This command changes the page 
+style for this one page.  After this page, the compiler will return to the default page 
+style for this document.\\
+
+The next section is about math symbols.  Notice that the section is not numbered.  
+This is because I've used the command $\backslash$section* instead of 
+$\backslash$section in the source code.\\
+\begin{center}
+\fbox{~Here, I'll use the $\backslash$newpage command.~}
+\end{center}
+
+\newpage
+
+\setcounter{chapter}{4}
+\section*{Typing Math}
+\label{math}
+Sections \ref{intro} and \ref{paragraphs} focused on some basic formatting, but 
+you're using \LaTeX~ because you need to write a technical document involving
+mathematical symbols.  This section will touch on {\it some} symbols.  Others can 
+be found in any standard reference book, and many can be found at the online 
+dictionary cited in Section \ref{intro}.  
+
+\begin{enumerate} 	% Enters the enumeration environment
+\setcounter{enumi}{3} 
+% The enumi counter resets at zero every time you leave the enumerate 
+% environment.  If you want to continue an enumeration, you have to set the 
+% counter at the right starting point.
+
+\item To move into or out of the inline math mode, use a single dollar sign \$.  
+For example, the command \$$\backslash$R\$ makes the sign for the real 
+numbers, $\R$.  
+
+
+\item If you haven't noticed already, note that any command you want to give the 
+compiler is preceded by a backslash.  Since backslashes tell the compiler that an 
+instruction will follow, the backslash is a protected character.  If you want to typeset 
+one, you have to use the command \$$\backslash$backslash\$
+
+\item To move into our out of the display mode for math, use a double dollar 
+sign, \$\$.  For example, the command 
+\begin{center}
+\$\$ $\backslash$sum\underline{~}$\{$k=1$\}\hat{~}\backslash$infty 
+$\backslash$left ( $\backslash$frac$\{1\}\{2\}\backslash$right )
+$\hat{~}\{\backslash$ln k$\}$, \$\$  
+\end{center}
+generates the display of 
+$$	% Enters the display mode
+\sum_{k=1}^\infty \left ( \frac{1}{2} \right )^{\ln k} ,
+$$ 	% Exits the display mode
+which is nicely set apart from the narrative and easy to see.
+
+\item You might also find the following symbols useful:
+$$
+\int_1^{17} \frac{x^4-9x+2}{\ln x + \log_7 x +20}~dx ~~\mbox{ or }~~
+{8 \choose 4} 
+$$
+
+\item The symbols
+$$
+\frac{d}{dx} f(x) ~~\mbox{ and }~~ f_j(x)\stackrel{w}{\rightarrow} f(x)
+$$
+are also useful.
+
+\item Notice (in the source code) that the command $\backslash$mbox is used to 
+enter text while in math mode, and the character $\sim$ is used to make spaces 
+(you can use $\sim$ anywhere to force spaces).
+
+
+\item If you want to type a matrix, use an array in the math mode.  In an array, 
+you indicate the number of columns by telling the compiler how each column should 
+be aligned (this is part of the argument of the array command, as demonstrated in 
+the source code below).  Moving from one column to another is done with an 
+ampersand.
+\begin{equation} % Enters equation mode
+\label{ref demo} % Allows me to reference this equation later
+\left [ 
+\begin{array}{cclr}
+4 & -1 & -x & 0 \\
+2 & 3 & -8 & -9 \\
+x & i & e & \pi
+\end{array}
+\right ]
+\end{equation} % Exits equation mode
+
+\item Notice that the $\backslash$left and $\backslash$right commands were 
+used in (\ref{ref demo}) to help delimit the matrix.  These commands, which are 
+always used together, tell the compiler to enlarge the brackets to bound what's 
+between them.  Without their use, the matrix would look like this:
+$$
+ [ 
+\begin{array}{cclr}
+4 & -1 & -x & 0 \\
+2 & 3 & -8 & -9 \\
+x & i & e & \pi
+\end{array}
+ ]
+$$
+\item Arrays can be partitioned with vertical or horizontal lines.
+$$
+\left [ 
+\begin{array}{ccl|r}
+4 & -1 & -x & 0 \\
+\hline
+2 & 3 & -8 & -9 \\
+x & i & e & \pi \\
+\end{array}
+\right ]
+$$
+
+\item When dealing with matrices, the commands to produce $\cdots$, $\vdots$ 
+and $\ddots$ are often useful.
+
+\item You can suppress one side of the $\backslash$left and $\backslash$right 
+pairing with a period.  For example,
+$$
+f(x) = \left \{ 
+\begin{array}{ll}
+e^{-1/x^2} & \mbox{ if } x \not = 0 \\
+0 & \mbox{ if } x =0
+\end{array} 
+\right .
+$$
+Notice (in the source code) that I generated the $\{$ with the command 
+$\backslash \{$.  I have to do it this way because the curly-braces are used 
+to delimit the arguments of commands to the compiler, so they are also protected 
+characters.
+
+\item The tabular environment is very similar to the array environment, except 
+that you use it in text mode instead of math mode.  For example,
+\begin{center} % Enters the centered environment
+\begin{tabular}{lr} % Enters the tabular environment
+this is an example & of \\
+a tabular & environment
+\end{tabular} % Exits the tabular environment
+\end{center} % Exits the centered environment
+
+\item Just as with arrays, you can partition a table with vertical and horizontal lines.
+\begin{center}
+\begin{tabular}{|r|c|}
+\hline
+{\bf Item} & {\bf Cost} \\
+\hline
+\hline
+Computer & \$ 1200 \\
+\hline 
+Daily intake of coffee & \$2.25 \\
+\hline
+\LaTeX~compiler & free \\
+\hline
+Hours of typing source code & priceless\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{enumerate} % Exits the enumeration environment.  
+
+\setcounter{chapter}{5}
+\section{Referencing Equations, Sections, Etc.}
+\subsection{The Benefits}
+
+Several equations and sections have been referenced so far in this document.  It's 
+silly to try to keep track of them all by hand -- that's the kind of thing we have 
+computer for, and it's exactly what \LaTeX does for you.  If you're reading the 
+source code along with this .pdf file, you've already seen the 
+$\backslash$label$\{$name$\}$ and $\backslash$ref$\{$name$\}$ commands in 
+use.  As long as you keep the same labels with the same equations, you'll never 
+have to worry about keeping track of your references.  The compiler will just 
+renumber them as needed.  I'll use the $\backslash$begin$\{$enumerate$\}$ 
+command to demonstrate (by way of analogy).  Suppose I have the list,
+\be
+\item onions
+\item potatoes
+\item tomatoes
+\item soda
+\ee
+but realize that I want to insert an item in the second slot.  I don't need to 
+renumber the list by hand.  Instead, I just insert the new item in the appropriate 
+slot and \LaTeX~ renumbers the later items for me (take a look at the source code)
+\be
+\item onions
+\item potatoes
+\item Dan Quayle
+\item tomatoes
+\item soda
+\ee
+Equations and sections, and anything else that's labeled, works the same way.  So 
+instead of referencing equation (4.1) by hand (as I just did in the source code), I 
+reference equation (\ref{ref demo}) by typing ($\backslash$ref$\{$ref demo$\}$).  
+Now, if I were to insert a new label before equation (\ref{ref demo}), it would be 
+renumbered automatically and I won't have to change all of my references to it.  
+This can save a {\it lot} of time.
+
+\subsection{Here's the Catch}
+
+The \LaTeX compiler keeps all of the equations labels in an auxiliary file.  Every 
+time you compile the document, \LaTeX generates the .aux file (or overwrites it, 
+if it already exists).  
+
+\bi
+\item The first time you compile the document, the .aux file does not yet exist, 
+so the compiler can't use it to cross-reference for you.  That means you have to 
+compile a second time in order for the reference numbers to appear.
+
+\item If you're working on a document that's already been compiled once or more 
+times, the .aux file already exists, and \LaTeX~ will use it to generate equation 
+numbers, etc.  {\it However}, the labels for anything new will not be in the .aux 
+file, so the new labels won't work.  To get new labels to work, compile the document 
+a second time.
+\ei
+
+As a general rule, if you want to see the basic document, compile once.  If you 
+want to have all the reference numbers correct, compile a second time.  If you 
+are going to print a finished copy, compile a third time (just to be sure).
+
+\setcounter{chapter}{6}
+\section{Color}
+You can use basic colors like red, green, blue, and magenta without much trouble, 
+but others you have to define.  I like to use colors to highlight a step that students 
+might not find obvious.  For example,
+\begin{eqnarray*}
+{\mathcal{L}} & = & \int_0^{2\pi} \sqrt{ (1 + \sin \theta)^2 + \cos^2\theta}~d\theta \\
+& = & 
+\int_0^{2\pi} \sqrt{2 + 2\sin \theta}~d\theta
+= 
+\int_{-\pi/2}^{3\pi/2} \sqrt{2 + 2\sin \theta}~d\theta\\
+& = & 
+2\int_{-\pi/2}^{\pi/2} \sqrt{2 + 2\sin \theta}~d\theta
+ = 
+2\int_{-\pi/2}^{\pi/2} \sqrt{2 + 2\sin \theta}~{\color{blue}
+\frac{\sqrt{2 - 2\sin\theta}}{\sqrt{2 - 2\sin\theta}}}~ d\theta \\
+& = & 
+2\int_{-\pi/2}^{\pi/2} \frac{2|\cos \theta|}{\sqrt{2 - 2\sin\theta}}~d\theta
+ = 
+4\int_{-\pi/2}^{\pi/2} \frac{\cos \theta}{\sqrt{2 - 2\sin\theta}}~d\theta .
+\end{eqnarray*}
+
+Notice that all of the equalities are aligned in the above string.  This is because 
+I've used the eqnarray* environment.  If you want a line or two to be named, you 
+should use the eqnarray environment instead, as follows:
+
+\begin{eqnarray}
+{\mathcal{L}} & = & \int_0^{2\pi} \sqrt{ (1 + \sin \theta)^2 + \cos^2\theta}~d\theta =
+\int_0^{2\pi} \sqrt{2 + 2\sin \theta}~d\theta \nonumber \\
+& = & 
+\int_{-\pi/2}^{3\pi/2} \sqrt{2 + 2\sin \theta}~d\theta
+=
+2\int_{-\pi/2}^{\pi/2} \sqrt{2 + 2\sin \theta}~d\theta \nonumber \\
+& = & 
+2\int_{-\pi/2}^{\pi/2} \sqrt{2 + 2\sin \theta}~{\color{blue}
+\frac{\sqrt{2 - 2\sin\theta}}{\sqrt{2 - 2\sin\theta}}}~ d\theta \label{demo} \\
+& = & 
+2\int_{-\pi/2}^{\pi/2} \frac{2|\cos \theta|}{\sqrt{2 - 2\sin\theta}}~d\theta
+ = 
+4\int_{-\pi/2}^{\pi/2} \frac{\cos \theta}{\sqrt{2 - 2\sin\theta}}~d\theta .\nonumber 
+\end{eqnarray}
+Now I can alert students to the strange factor of 1 in equation (\ref{demo}). 
+
+\setcounter{chapter}{6}
+\section{Other Resources}
+There are other online tutorials for \LaTeX, some of which I'll give here.
+
+	\begin{itemize}
+	\item http://www.tug.org.in/tutorials.html
+	\item http://heather.cs.ucdavis.edu/$\sim$matloff/latex.html
+	\item {\scriptsize http://www.cs.cornell.edu/Info/Misc/LaTeX-Tutorial/LaTeX-Home.html}
+	\item http://www.csclub.uwaterloo.ca/u/sjbmann/tutorial.html
+	\end{itemize}
+
+
+Each of the above websites was found by searching for ``LaTeX tutorial" at
+{\texttt http://www.google.com/}.  These are good starts, but I find it helpful to have an actual book (with a good index) next to the computer while I code .tex files.
+
+
+\end{document} 
