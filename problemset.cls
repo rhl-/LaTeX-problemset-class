@@ -1,3 +1,8 @@
+%%%%%
+% problemset.cls 
+% originally written by gregory puleo
+% hacked on by ryan h. lewis
+%%
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{problemset}[2008/01/22 Class for mathematical problem sets]
 \RequirePackage{fancyhdr,amsthm}
@@ -27,7 +32,7 @@
 \LoadClass[titlepage]{article}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % redefine maketitle to clear to a double page
-%  (why doesn't article do this by default?)
+%  (why doesnt article do this by default?)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \let\@oldmaketitle=\maketitle
 \renewcommand{\maketitle}{{\pagestyle{empty}\@oldmaketitle\cleardoublepage\setcounter{page}{1}}}
